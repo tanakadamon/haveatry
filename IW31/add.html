@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.core.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.snow.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.bubble.css" />
+
+  <script>
+    (function (d) {
+      var config = {
+        kitId: 'xtj6snd',
+        scriptTimeout: 3000,
+        async: true
+      },
+        h = d.documentElement, t = setTimeout(function () {h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";}, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () {a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try {Typekit.load(config)} catch (e) {} }; s.parentNode.insertBefore(tk, s)
+    })(document);
+  </script>
+  <link rel="stylesheet" href="css/destyle.css">
+  <link rel="stylesheet" href="css/add.css">
+  <link rel="stylesheet" href="css/add_article.css">
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/vue-quill-editor@3.0.6/dist/vue-quill-editor.js"></script>
+  <script>
+    Vue.use(VueQuillEditor)
+  </script>
+
+  <style>
+    #preview {
+      border: solid 1px black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div>
+      <a href=""><img src="img/logo.png" alt="logo" class="toplogo"></a>
+    </div>
+    <div>
+      <nav>
+        <ul>
+          <li><a href="index.php">チュートリアル</a></li>
+          <li><a href="worklist.php">投稿一覧</a></li>
+          <li><a href="how.php">使い方</a></li>
+          <li><a href="mypage.php">マイページ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="link_top" class="hidden">
+      <a id="link" href="add.html">投稿</a>
+    </div>
+  </header>
+  <main>
+
+
+    <div id="app">
+      <form action="php/main.php" method="POST" enctype="multipart/form-data">
+
+        <input type="text" id="title" name="title" placeholder="タイトル"><br>
+
+        <div id="formdesign">
+          <div class="attachment">
+
+            <label>
+              <input type="file" name="image" id="file" class="fileinput" accept="image/*"
+                　onchange="previewImage(this);">サムネイルを添付する
+            </label>
+            <img id="preview" src="" style="max-width:200px;">
+            
+          </div>
+
+
+
+          <div class="select">
+            <span class="placeholder">使用ソフト</span>
+            <ul>
+              <li data-value="ae">After Effects</li>
+              <li data-value="pre">Premiere Pro</li>
+              <li data-value="fcp">Final Cut Pro X</li>
+              <li data-value="dr">DaVinci Resolve</li>
+              <li data-value="ble">Blender</li>
+            </ul>
+            <input type="hidden" name="type" />
+          </div>
+
+
+
+        </div>
+        <input type="hidden" name="user_id" id="user_id" value="Tanaka">
+        <div>
+          <quill-editor v-model="content" style="height: 450px;" ref="quillEditor" :options="editorOption"
+            @change="oneEditorChange($event)">
+            </vue-quill-editor>
+            <input type="file" id="getFile" @change="uploadFunction($event)" />
+        </div>
+        <!-- プレビュー -->
+        <!-- <div id="preview" class="content ql-editor" v-html="content" name="pre"></div>
+      <div class="js-quill-editor" data-target="#content"></div> -->
+        <input id="content" name="content" type="hidden" :value="content">
+        <div class="attachment button">
+          <label><input type="submit" class="button" value="投稿">投稿</label>
+        </div>
+      </form>
+    </div>
+
+
+    <div id="output"></div>
+
+  </main>
+
+  <footer>
+    <h2 class="hidden"></h2>
+    <div class="footer_flex">
+      <div class="footer_logo">
+        <img src="img/logo.png" alt="">
+      </div>
+
+      <div class="footer_ele">
+        <dl>
+          <dd>チュートリアル</dd>
+          <dd>投稿一覧</dd>
+          <dd>使い方</dd>
+          <dd>マイページ</dd>
+        </dl>
+
+        <dl>
+          <dd>お問い合わせ</dd>
+          <dd>利用規約</dd>
+          <dd>プライバシーポリシー</dd>
+        </dl>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+
+    function previewImage(obj) {
+      var fileReader = new FileReader();
+      fileReader.onload = (function () {
+        document.getElementById('preview').src = fileReader.result;
+      });
+      fileReader.readAsDataURL(obj.files[0]);
+    }
+
+
+    Vue.use(VueQuillEditor);
+    new Vue({
+      el: "#app",
+      data: {
+        content: '',
+        editorOption: {
+          theme: 'snow'
+        }
+      }
+    });
+
+
+    let BlockEmbed = Quill.import('blots/block/embed');
+
+    class ImageBlot extends BlockEmbed {
+      static create(value) {
+        let node = super.create();
+        node.setAttribute('alt', value.alt);
+        node.setAttribute('src', value.url);
+        return node;
+      }
+
+      static value(node) {
+        return {
+          alt: node.getAttribute('alt'),
+          url: node.getAttribute('src')
+        };
+      }
+    }
+    ImageBlot.blotName = 'image';
+    ImageBlot.tagName = 'img';
+
+
+
+
+    $('.select').on('click', '.placeholder', function () {
+      var parent = $(this).closest('.select');
+      if (!parent.hasClass('is-open')) {
+        parent.addClass('is-open');
+        $('.select.is-open').not(parent).removeClass('is-open');
+      } else {
+        parent.removeClass('is-open');
+      }
+    }).on('click', 'ul>li', function () {
+      var parent = $(this).closest('.select');
+      parent.removeClass('is-open').find('.placeholder').text($(this).text());
+      parent.find('input[type=hidden]').attr('value', $(this).attr('data-value'));
+    });
+
+  </script>
+</body>
+
+</html>

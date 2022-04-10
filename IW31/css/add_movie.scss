@@ -1,0 +1,61 @@
+#app {
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+
+#input-video {
+  display: none;
+}
+
+label {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  color: #ccc;
+  border: 2px dashed #ccc;
+  background: #eee;
+  box-sizing: border-box;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    background: #fafafa;
+    padding: 20px 10px;
+  }
+}
+
+video {
+  display: block;
+  max-width: 100%;
+  margin: 10px auto;
+}
+
+.thumbnail-list {
+  .thumbnail {
+    width: 20%;
+    height: 20%;
+    box-sizing: border-box;
+    border: 4px solid transparent;
+    transition: all 0.2s;
+
+    &.active {
+      border: 4px solid #06c;
+    }
+
+    &:not(.active):hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  }
+}
+
+.fade-enter-active {
+  transition: all 0.4s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}

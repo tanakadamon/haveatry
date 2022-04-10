@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.core.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.snow.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.bubble.css" />
+  <link rel="stylesheet" href="css/destyle.css">
+  <link rel="stylesheet" href="css/addwork.css">
+
+
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div>
+      <!-- <a href=""><img src="img/logo.png" alt="logo" class="toplogo"></a> -->
+    </div>
+    <div>
+      <nav>
+        <ul>
+          <li><a href="">チュートリアル</a></li>
+          <li><a href="">ウェブ講座</a></li>
+          <li><a href="worklist.html">投稿一覧</a></li>
+          <li><a href="">マイページ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="link_top" class="hidden">
+      <a id="link" href="add.html">投稿</a>
+    </div>
+  </header>
+
+
+  <main>
+    <h1></h1>
+    <article>
+      <h2>作品を投稿</h2>
+      <section>
+
+
+        
+
+        <form action="" method="POST">
+          <div id="upFileWrap">
+            <div id="inputFile">
+              <!-- ドラッグ&ドロップエリア -->
+              <p id="dropArea">ここにファイルをドロップしてください<br>または</p>
+
+              <!-- 通常のinput[type=file] -->
+              <div id="inputFileWrap">
+                <input type="file" name="uploadFile" id="uploadFile" accept="video/*">
+                <div id="btnInputFile"><span>ファイルを選択する</span></div>
+                <div id="btnChangeFile"><span>ファイルを変更する</span></div>
+                タイトル<input type="text">
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    // ドラッグ&ドロップエリアの取得
+    var fileArea = document.getElementById('dropArea');
+
+    // input[type=file]の取得
+    var fileInput = document.getElementById('uploadFile');
+
+    // ドラッグオーバー時の処理
+    fileArea.addEventListener('dragover', function (e) {
+      e.preventDefault();
+      fileArea.classList.add('dragover');
+    });
+
+    // ドラッグアウト時の処理
+    fileArea.addEventListener('dragleave', function (e) {
+      e.preventDefault();
+      fileArea.classList.remove('dragover');
+    });
+
+    // ドロップ時の処理
+    fileArea.addEventListener('drop', function (e) {
+      e.preventDefault();
+      fileArea.classList.remove('dragover');
+
+      // ドロップしたファイルの取得
+      var files = e.dataTransfer.files;
+
+      // 取得したファイルをinput[type=file]へ
+      fileInput.files = files;
+
+      if (typeof files[0] !== 'undefined') {
+        //ファイルが正常に受け取れた際の処理
+      } else {
+        //ファイルが受け取れなかった際の処理
+      }
+    });
+
+    // input[type=file]に変更があれば実行
+    // もちろんドロップ以外でも発火します
+    fileInput.addEventListener('change', function (e) {
+      var file = e.target.files[0];
+
+      if (typeof e.target.files[0] !== 'undefined') {
+        // ファイルが正常に受け取れた際の処理
+      } else {
+        // ファイルが受け取れなかった際の処理
+      }
+    }, false);
+  </script>
+</body>
+
+</html>

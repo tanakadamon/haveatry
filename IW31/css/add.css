@@ -1,0 +1,183 @@
+body{
+  background-color: #ffffff;
+  
+}
+.none{
+  display: none;
+}
+.hidden{
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+header{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 50px;
+  box-shadow: 2px rgb(68, 68, 68);
+  background-color: rgb(27, 27, 27);
+  text-align: center;
+  
+}
+
+
+.toplogo{
+  margin-right: 100px;
+  width: 200px;
+}
+
+article{
+  background-color: rgb(27, 27, 27);
+  color:white;
+  padding-bottom: 50px;
+}
+nav ul{
+  display: flex;
+  width: 160%;
+  text-align: center;
+}
+nav a{
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  font-family: ta-hougan-k500, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: white;
+  padding: 0 20px;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+  border: solid 1px rgb(255, 255, 255);
+  animation: 0.5s;
+
+}
+nav a:hover{
+  text-decoration: none;
+  transform:scale(1.2,1.2);
+  transition:.2s all;
+  color: white;
+  border: solid 1px white;
+}
+
+
+footer{
+  color: white;
+  font-family: ta-hougan-k500, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+  margin-top: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: rgb(27, 27, 27);
+  text-align: center;
+}
+footer img{
+  width: 300px;
+}
+.footer_flex{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  justify-content:center;
+  gap: 300px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.footer_ele{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  justify-content:center;
+  gap: 90px;
+  /* margin-right: 100px;
+  margin-left: 100px; */
+}
+
+
+
+#formdesign {
+  width: 50%;
+  display: flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  justify-content:flex-start;
+  margin-bottom: 40px;
+  margin-left: 50px;
+}
+
+
+
+
+main{
+  padding:10px 50px;
+}
+
+.attachment {
+  /* width: 400px; */
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.attachment label {
+  padding: 15px 40px;
+  border-radius: 4px;
+  color: white;
+  background-color: rgb(27, 27, 27);
+  border: solid 2px #ffffff;
+  cursor: pointer;
+}
+.attachment label:hover {
+  color: rgb(27, 27, 27);
+  background-color: #ffffff;
+  border: solid 2px rgb(27, 27, 27);
+
+}
+
+input[type="file"],input[type="submit"] {
+  display: none;
+}
+
+.attachment p {
+  margin: 10px 0 0 0;    
+}
+
+
+
+
+.button{
+  margin-top: 50px;
+  text-align: right;
+}
+
+ input[type='text']{
+  box-sizing: border-box;
+	width: 90%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #000000;
+	border: 1px solid #1b2538;
+  border-radius: 4px;
+  margin: 30px;
+ }
+ input[type='text']:focus {
+	border: 1px solid rgb(27, 27, 27);
+	outline: none;
+	box-shadow: 0 0 5px 1px rgb(27, 27, 27);
+}
+
+
+
+
+
+
+
+
+.ql-toolbar{
+
+}
+

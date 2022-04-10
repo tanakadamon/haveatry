@@ -1,0 +1,96 @@
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.select {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 325px;
+  color: rgb(27, 27, 27);
+  vertical-align: middle;
+  text-align: left;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.select .placeholder {
+  position: relative;
+  display: block;
+  background-color: white;
+  border: solid 2px rgb(27, 27, 27);
+  z-index: 1;
+  padding: 1em;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.select .placeholder:hover {
+  background-color: white;
+  border: solid 2px rgb(27, 27, 27);
+}
+
+.select .placeholder:after {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-family: 'FontAwesome';
+  content: '\f078';
+  z-index: 10;
+}
+
+.select.is-open .placeholder:after {
+  content: '\f077';
+}
+
+.select.is-open ul {
+  display: block;
+}
+
+.select.select--white .placeholder {
+  background: #fff;
+  color: rgb(27, 27, 27);
+}
+
+.select.select--white .placeholder:hover {
+  background: #fafafa;
+}
+
+.select ul {
+  display: none;
+  position: absolute;
+  overflow: hidden;
+  overflow-y: auto;
+  width: 100%;
+  background: white;
+  border: solid 1px #c2c2c2;
+  border-radius: 2px;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  margin: 5px 0 0 0;
+  padding: 0;
+  z-index: 100;
+  max-height: 220px;
+}
+
+.select ul li {
+  display: block;
+  text-align: left;
+  padding: 0.5em;
+  color: #999;
+  cursor: pointer;
+}
+
+.select ul li:hover {
+  background: rgb(31, 31, 31);
+  color: rgb(255, 255, 255);
+}
+/*# sourceMappingURL=add_article.css.map */
